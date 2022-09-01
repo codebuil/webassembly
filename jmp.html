@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title>add</title>
+		<style>
+			#hello{
+				height:550px;
+				width:600px;
+			}
+			#hworld{
+				position:relative;
+				height:50px;
+				width:160px;
+				top: 0px
+				left: 0px
+			}
+		</style>
+	</head>
+	<body bgColor='green'>
+		<div id="hello" bgColor="green">
+		<div id="hworld" class="worlds" bgColor="green" top="200px" left="200px" >HELLO WORLD.....</div>
+		</div>
+		<script>
+	
+	function f1(){
+			var x=0;
+			var y=1;
+			
+			txts.style.top=(op.jumpi(y)).toString()+"px";
+			txts.style.left=(op.jumpi(x)).toString()+"px";
+			
+	}
+	
+	var op;
+	
+	var t=200;
+	var tt=200;
+	var txts=document.getElementById("hworld");
+	txts.style.top=tt.toString()+"px";
+	txts.style.left=tt.toString()+"px";
+			
+
+	fetch("jmp.wasm") 
+   .then(bytes => bytes.arrayBuffer()) 
+   .then(mod => WebAssembly.compile(mod)) 
+   .then(module => { 
+      let instance = new WebAssembly.Instance(module);
+	op=instance.exports;
+
+
+});
+
+	setInterval(f1,1000);
+
+	</script>
+	</body>
+</html>
